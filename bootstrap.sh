@@ -18,9 +18,28 @@ chsh -s /bin/bash
 echo -e "luckfox\nluckfox" | passwd
 apk del -r shadow
 
-# Install SSH
-apk add dropbear mtd-utils-ubi bottom fastfetch unudhcpd --no-cache
-rc-update add dropbear default
+# Setup time 
+# apk add openntpd tzdata --no-cache
+
+# # Add MTD utils for the UBI (Unsorted Block Images) filesystem
+# apk add mtd-utils-ubi --no-cache
+
+# # Add btop to monitor system resources
+# apk add btop --no-cache
+
+# # Install SSH (and SCP)
+# apk add openssh --no-cache
+# rc-update add sshd default
+
+# # Install cron, ntpd, tzdata
+# apk add tzdata cronie openntpd --no-cache
+# mkdir -p /etc/local.d && \
+#     { \
+#         echo '#!/bin/bash'; \
+#         echo 'ntpd -s -d && crond'; \
+#     } > /etc/local.d/crond.start && \
+#     chmod +x /etc/local.d/crond.start && \
+#     rc-update add local default
 
 # Clear apk cache
 rm -rf /var/cache/apk/*
