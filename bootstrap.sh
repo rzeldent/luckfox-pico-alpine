@@ -57,15 +57,14 @@ apk add openssh --no-cache && \
 rm -rf /var/cache/apk/*
 
 # Install .NET 10 runtime
-mkdir -p /opt && \
-    cd /opt && \
-    mkdir -p dotnet && \
-    cd dotnet && \
+mkdir -p /opt/dotnet && \
+    cd /opt/dotnet && \
     wget https://builds.dotnet.microsoft.com/dotnet/Runtime/10.0.0/dotnet-runtime-10.0.0-linux-musl-arm.tar.gz && \
     tar -xzf dotnet-runtime-10.0.0-linux-musl-arm.tar.gz && \
     rm dotnet-runtime-10.0.0-linux-musl-arm.tar.gz && \
     ln -s /opt/dotnet/dotnet /usr/bin/dotnet
 
 # Packaging rootfs
-for d in bin etc lib sbin usr var opt; do tar c "$d" | tar x -C /extrootfs; done
-for dir in dev proc root run sys oem userdata; do mkdir /extrootfs/${dir}; done
+cd / && \
+    for d in bin etc lib sbin usr var opt; do tar c "$d" | tar x -C /extrootfs; done && \
+    for dir in dev proc root run sys oem userdata; do mkdir /extrootfs/${dir}; done
