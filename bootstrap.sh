@@ -59,9 +59,7 @@ rm -rf /var/cache/apk/*
 # Install .NET 10 runtime
 mkdir -p /opt/dotnet && \
     cd /opt/dotnet && \
-    wget https://builds.dotnet.microsoft.com/dotnet/Runtime/10.0.0/dotnet-runtime-10.0.0-linux-musl-arm.tar.gz && \
-    tar -xzf dotnet-runtime-10.0.0-linux-musl-arm.tar.gz && \
-    rm dotnet-runtime-10.0.0-linux-musl-arm.tar.gz && \
+    wget -qO- https://builds.dotnet.microsoft.com/dotnet/Runtime/10.0.0/dotnet-runtime-10.0.0-linux-musl-arm.tar.gz | tar -xz && \
     ln -s /opt/dotnet/dotnet /usr/bin/dotnet
 
 # Packaging rootfs
