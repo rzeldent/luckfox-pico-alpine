@@ -19,21 +19,21 @@ echo -e "luckfox\nluckfox" | passwd
 apk del -r shadow
 
 # Setup time 
-# apk add openntpd tzdata --no-cache
+apk add openntpd tzdata --no-cache
 
-# # Add MTD utils for the UBI (Unsorted Block Images) filesystem
-# apk add mtd-utils-ubi --no-cache
+# Add MTD utils for the UBI (Unsorted Block Images) filesystem
+apk add mtd-utils-ubi --no-cache
 
-# # Add btop to monitor system resources
-# apk add btop --no-cache
+# Add btop to monitor system resources
+apk add btop --no-cache
 
-# # Install SSH (and SCP)
-# apk add openssh --no-cache
-# rc-update add sshd default
+# Install SSH (and SCP)
+apk add openssh --no-cache
+rc-update add sshd default
 
-# # Install cron, ntpd, tzdata
-# apk add tzdata cronie openntpd --no-cache
-# mkdir -p /etc/local.d && \
+# Install cron, ntpd, tzdata
+#apk add  cronie  --no-cache
+#mkdir -p /etc/local.d && \
 #     { \
 #         echo '#!/bin/bash'; \
 #         echo 'ntpd -s -d && crond'; \
