@@ -31,6 +31,8 @@ mkdir -p /etc/local.d && \
 
 # Setup networking
 echo "Luckfox-pico-plus" > /etc/hostname
+# Disable usb gadget for networking
+rc-update del usb-gadget default
 
 # Setup time 
 apk add chrony tzdata --no-cache && \
